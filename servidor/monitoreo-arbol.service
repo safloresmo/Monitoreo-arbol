@@ -1,0 +1,20 @@
+# Arranca el puente de MQTT a la base de datos con el sistema.
+#
+#   sudo cp monitoreo-arbol.service /etc/systemd/system/
+#   sudo systemctl enable --now monitoreo-arbol
+#
+# Ajusta el usuario y las rutas a donde hayas dejado el proyecto.
+[Unit]
+Description=Monitoreo del árbol de limón: de MQTT a la base de datos
+After=network-online.target mosquitto.service mariadb.service
+Wants=network-online.target
+
+[Service]
+User=pi
+WorkingDirectory=/home/pi/monitoreo-arbol/servidor
+ExecStart=/home/pi/monitoreo-arbol/servidor/.venv/bin/python mqtt_a_sql.py
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

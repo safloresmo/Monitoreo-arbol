@@ -1,0 +1,23 @@
+# Broker y base de datos en contenedores, para probar el servidor sin la
+# Raspberry Pi. Los datos de acceso coinciden con los de `.env.ejemplo`.
+#
+#   docker compose up -d      (o podman-compose up -d)
+services:
+  broker:
+    image: docker.io/library/eclipse-mosquitto:2
+    ports:
+      - "1883:1883"
+    volumes:
+      - ./mosquitto.conf:/mosquitto/config/mosquitto.conf:ro
+
+  base:
+    image: docker.io/library/mariadb:11
+    ports:
+      - "3306:3306"
+    environment:
+      MARIADB_ROOT_PASSWORD: prueba
+      MARIADB_DATABASE: limon
+      MARIADB_USER: usuario
+      MARIADB_PASSWORD: clave
+    volumes:
+      - ../esquema.sql:/docker-entrypoint-initdb.d/esquema.sql:ro

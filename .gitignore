@@ -1,0 +1,6 @@
+firmware/.pio/
+firmware/include/secretos.h
+servidor/.env
+.venv/
+__pycache__/
+.pytest_cache/
