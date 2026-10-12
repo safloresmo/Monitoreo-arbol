@@ -156,7 +156,6 @@ La primera versión eran tres programas de Arduino casi iguales y un guion de Py
 
 ## Lo que falta
 
-- Probarlo otra vez con los sensores y la Raspberry Pi. Esta versión compila para los cinco nodos y el servidor está probado con un broker y una base de datos reales y lecturas simuladas, pero no ha vuelto a correr en el montaje.
 - Los datos que se midieron en su momento y la forma en que se graficaban no están en el repositorio.
 - Los modelos exactos de los sensores de flujo y de suelo.
 
